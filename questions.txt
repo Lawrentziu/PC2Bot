@@ -1,0 +1,25 @@
+Care forma este corecta?
+a. #include <iostream>
+b. #include 'iostream'
+c. #include "iostream"
+d. #include <iostream.h>
+
+@
+Se da urmatoarea secventa de cod:
+```cpp
+int a;
+int b = 5;
+```
+Ce se poate spune despre aceasta?
+
+**Raspuns 1**
+Prima declaratie este corecta
+
+**Raspuns 2**
+A doua declaratie este corecta
+
+**Raspuns 3**
+Ambele declaratii sunt corecte
+
+**Raspuns 4**
+Nici o declaratie nu este corecta
