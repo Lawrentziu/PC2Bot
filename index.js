@@ -6,6 +6,9 @@ const { token } = require('./config.json');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.commands = new Collection();
+const quizFile = fs.readFileSync(path.join(__dirname, 'questions.txt'), 'utf8');
+const questions = quizFile.split(/\d+\./);
+
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
@@ -33,7 +36,7 @@ for (const file of eventFiles) {
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
 	} else {
-		client.on(event.name, (...args) => event.execute(...args));
+		client.on(event.name, (...args) => event.execute(...args, questions));
 	}
 }
 

@@ -5,9 +5,9 @@ const quizFile = fs.readFileSync(path.join(__dirname, 'questions.txt'), 'utf8');
 
 module.exports = {
     name: 'loadQuestions',
-    execute(number) {
+    execute() {
 
-        const questions = quizFile.split('\n@');
+        const questions = quizFile.split(/\d+\./);
         if (number > questions.length)
         {
             return -1;

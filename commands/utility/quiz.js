@@ -1,5 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const loadQuestion = require('../../createQuestions.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -8,9 +7,12 @@ module.exports = {
     .addStringOption(option =>
         option.setName('number')
             .setDescription('Quiz number (leave empty for random)')),
-    async execute(interaction) {
+    async execute(interaction, questions) {
         const number = interaction.options.getString('number');
-        const question = loadQuestion.execute(number);
+        const question = {
+            description: questions[number - 1],
+        };
+
         if (question == -1)
         {
             const error = new EmbedBuilder()

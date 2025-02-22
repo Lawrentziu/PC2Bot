@@ -1,25 +1,2116 @@
-Care forma este corecta?
-a. #include <iostream>
-b. #include 'iostream'
-c. #include "iostream"
-d. #include <iostream.h>
+1. Care este ordinea în care sunt create obiectele?
 
-@
-Se da urmatoarea secventa de cod:
 ```cpp
-int a;
-int b = 5;
+class student {
+    int nota;
+};
+student s1, s2, s3;
 ```
-Ce se poate spune despre aceasta?
 
 **Raspuns 1**
-Prima declaratie este corecta
+Toate sunt create în același timp
 
 **Raspuns 2**
-A doua declaratie este corecta
+s1, s2, s3
 
 **Raspuns 3**
-Ambele declaratii sunt corecte
+s3, s2, s1
+
+2. Care este sintaxa pentru a accesa variabilele unui namespace?
+
+**Raspuns 1**
+namespace$operator
+
+**Raspuns 2**
+namespace#operator
+
+**Raspuns 3**
+namespace::identificator
 
 **Raspuns 4**
-Nici o declaratie nu este corecta
+namespace,identificator
+
+3. Fie următoarea secvență de cod:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class C {
+    int a;
+public:
+    C() { cout << "\nConstructorul implicit"; }
+    C(const C&);
+    C& operator =(C&);
+    ~C() { cout << "\nDestructor"; }
+};
+
+C& C::operator=(C &c) {
+    cout <<endl <<”Operatorul egal”;
+    return c;
+}
+
+C::C(const C&c) {
+    cout<<endl<<”Constructorul de copiere”;
+}
+
+int main() {
+    C x, y=x;
+    C b=x;
+    x=y;
+    cout <<endl;
+    return 0;
+};
+```
+
+**Raspuns 1**
+produce eroare de compilare pe linia 311
+
+**Raspuns 2**
+apeleaza de doua ori constructorul implicit, de doua ori operatorul egal, o data constructorul de copiere si de doua ori destructorul
+
+**Raspuns 3**
+apeleaza de doua ori constructorul de copiere, o data operatorul egal, o data constructorul implicit si de trei ori destructorul
+
+4. Care sunt iteratorii?
+
+**Raspuns 1**
+componente STD utilizate pentru apelul eficient al functiilor
+
+**Raspuns 2**
+componente STD utilizate pentru a defini clase template
+
+**Raspuns 3**
+componente STD utilizate pentru a accesa elementele unui container
+
+**Raspuns 4**
+componente STD utilizate pentru vectori
+
+5. Care dintre următorii operatori sunt generați în mod implicit de către compilator?
+
+**Raspuns 1**
+&&
+
+**Raspuns 2**
+&
+
+**Raspuns 3**
+=
+
+**Raspuns 4**
+==
+
+6. Fie clasa B derivată protected din clasa A. La care membri are acces direct metodele definite ale clasei B?
+
+**Raspuns 1**
+Membri protejați ai Clasei A
+
+**Raspuns 2**
+Membri publici ai clasei A
+
+**Raspuns 3**
+Membri privați ai clasei B
+
+**Raspuns 4**
+Membri privați ai clasei A
+
+7. Ce va fi afișat pe ecran?
+
+```cpp
+class A {
+public:
+    int k;
+};
+
+int main() {
+    A x = { 5 };
+    A y = x;
+    cout << x.k << " " << y.k << endl;
+}
+```
+
+**Raspuns 1**
+5.0
+
+**Raspuns 2**
+Eroare de compilare
+
+**Raspuns 3**
+5 5
+
+**Raspuns 4**
+10 valoare nedefinită
+
+8. Care din afirmațiile de mai jos sunt adevărate?
+
+**Raspuns 1**
+La definirea oricărui obiect, se apelează un constructor
+
+**Raspuns 2**
+În general, este necesară definirea unui destructor atunci când clasa are un membru pentru care se face alocare dinamică de memorie
+
+**Raspuns 3**
+Toți constructorii unei clase trebuie să fie publici
+
+**Raspuns 4**
+O clasă trebuie să aibă tot atâți destructori, câți constructori are
+
+**Raspuns 5**
+În general, dacă este necesară supraîncărcarea operatorului =, atunci este necesară și definirea unui constructor de copiere
+
+**Raspuns 6**
+Nu pot exista clase fără constructori definiți de utilizator
+
+9. Fie următoarea secvență de cod:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    int x, y;
+    A() { x = 1; y = 1; }
+    A(int x) {
+        this->x = x;
+        this->y += 1;
+    }
+};
+
+class B : public A {
+public:
+    B(int x) { this->y += this->x + x; }
+};
+
+int main() {
+    cout << endl << (new A())->y << (new B((new A())->y))->y;
+    return 0;
+}
+```
+
+**Raspuns 1**
+1 3
+
+**Raspuns 2**
+2 0
+
+**Raspuns 3**
+1 2
+
+**Raspuns 4**
+2 3
+
+10. Clasa ___ este o particularizare a unui template mai generic de clasă.
+
+**Raspuns 1**
+digit
+
+**Raspuns 2**
+string
+
+**Raspuns 3**
+math
+
+**Raspuns 4**
+integer
+
+11. Clasa derivată moștenește ______ din clasa părinte.
+
+**Raspuns 1**
+metode virtuale
+
+**Raspuns 2**
+funcții operator
+
+**Raspuns 3**
+constructori
+
+**Raspuns 4**
+membri
+
+12. Care afirmație este adevărată pentru o clasă prietenă?
+
+**Raspuns 1**
+Nu are implementare, este abstractă.
+
+**Raspuns 2**
+Poate accesa toți membrii privați ai clasei pentru care a fost declarată friend.
+
+**Raspuns 3**
+Poate accesa datele clasei pentru care a fost declarată friend, dar nu poate folosi metodele acesteia.
+
+**Raspuns 4**
+Poate accesa doar membrii protected ai clasei pentru care a fost declarată friend.
+
+13. Limbajul C++ suportă moștenire multiplă?
+
+**Raspuns 1**
+Nu
+
+**Raspuns 2**
+Da
+
+14. Care este rezultatul următoarei secvențe de instrucțiuni?
+
+```cpp
+int nr = 6;
+int* x = new int(nr);
+```
+
+**Raspuns 1**
+Se alocă dinamic pointerul x cu inițializarea valorii cu nr.
+
+**Raspuns 2**
+Variabila x este inițializată cu adresa variabilei nr.
+
+**Raspuns 3**
+Se alocă dinamic un vector x de nr elemente de tip int.
+
+15. Dacă într-o clasă se găsesc ca membri elemente de tipul altei clase (după exemplul de mai jos), acest concept se numește:
+
+```cpp
+class Masina {
+    std::vector<Roata> vec_Roti;
+};
+```
+
+**Raspuns 1**
+Polimorfism
+
+**Raspuns 2**
+Compoziție-agregare
+
+**Raspuns 3**
+Nu putem avea astfel de membri.
+
+**Raspuns 4**
+Moștenire
+
+16. Care afirmație este adevărată pentru următoarea clasă?
+
+```cpp
+class StudentAC {
+    int a;
+public:
+    float a;
+};
+```
+
+**Raspuns 1**
+Nu poate fi folosit același nume de variabilă de 2 ori.
+
+**Raspuns 2**
+Definiția clasei începe cu specificatorul de acces public.
+
+**Raspuns 3**
+O clasă nu poate avea membri de tipuri diferite.
+
+**Raspuns 4**
+Definiția clasei este corectă deoarece primul membru este private, iar al 2-lea public.
+
+17. Secvența de cod conținută de o funcție inline va fi executată mai rapid decât o funcție normală.
+
+**Raspuns 1**
+Adevărat
+
+**Raspuns 2**
+Fals
+
+18. Ce se va afișa la rularea următorului program?
+
+```cpp
+#include <iostream>
+
+int f(int &a, int b = 7) {
+    a = a + b;
+    return a + b;
+}
+
+int main() {
+    int a = 9, b = 1;
+    int rez = f(a, b);
+    rez = rez + a;
+    std::cout << "Rezultatul este:" << rez;
+    return 0;
+}
+```
+
+**Raspuns 1**
+39
+**Raspuns 2**
+21
+**Raspuns 3**
+19
+**Raspuns 4**
+0
+
+19. Ce se va afișa?
+
+```cpp
+class A {
+public:
+    virtual void g(void) {
+        cout << "g() parinte,";
+    }
+};
+
+class D : public A {
+public:
+    void g(void) {
+        g();
+        cout << "g() copil" << endl;
+    }
+};
+
+int main() {
+    A* pA = new D;
+    pA->g();
+}
+```
+
+**Raspuns 1**
+Nimic
+**Raspuns 2**
+Eroare de compilare
+**Raspuns 3**
+g() parinte, g() copil
+**Raspuns 4**
+g() copil
+
+20. Ce sunt functorii?
+
+**Raspuns 1**
+Obiecte ce apelează funcții ale altei clase
+**Raspuns 2**
+Funcții care sunt apelate o singură dată în program
+**Raspuns 3**
+Obiecte folosite ca funcții
+**Raspuns 4**
+Funcții care sunt apelate folosind pointeri către obiecte
+
+21. Fie următoarea secvență de cod:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Test {
+private:
+    int valoare;
+public:
+    Test(int vb) { valoare = vb; }
+    int GetValoare() { return valoare; }
+};
+
+int operator +(int vb, Test t) {
+    return vb + t.GetValoare();
+}
+
+int main() {
+    Test t(5);
+    int vb = 10 + t;
+    cout << endl << vb;
+    return 0;
+}
+```
+
+**Raspuns 1**
+Nici una din variante
+**Raspuns 2**
+15
+**Raspuns 3**
+5
+**Raspuns 4**
+10
+
+22. Presupunând că tipul de date test are definit corect constructorul fără parametri, constructorul de copiere, respectiv operatorul egal, fiecare printând la ieșirea standard câte un mesaj de tipul ”constructor fără parametri”, ”constructor de copiere”, respectiv ”operator egal”, ce se va afișa la ieșirea standard în urma secvenței?
+
+```cpp
+test a;
+test b=a;
+b=a;
+```
+
+**Raspuns 1**
+Constructor fără parametri operator egal operator egal
+**Raspuns 2**
+Constructor fără parametri constructor de copiere operator egal
+**Raspuns 3**
+Constructor fără parametri constructor fără parametri operator egal
+**Raspuns 4**
+Constructor fără parametri constructor de copiere constructor de copiere
+
+23. Ce tip de clasă nu permite instanțierea de obiecte?
+
+**Raspuns 1**
+Clasa abstractă
+**Raspuns 2**
+Clasa imbricată
+**Raspuns 3**
+Clasa părinte
+**Raspuns 4**
+Clasa anonimă
+
+24. Care dintre următoarele elementare nu se recomandă să apară în fișiere header?
+
+**Raspuns 1**
+Definiții de funcții
+**Raspuns 2**
+Definiții de template-uri
+**Raspuns 3**
+Definiții de clase
+**Raspuns 4**
+Definiții de tipuri (typedef)
+
+25. Fie următoarea secvență de cod:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    static bool val;
+    A() {
+        val = true;
+    }
+    void print() {
+        cout << "\nFirst\n";
+    }
+};
+
+bool A::val = false;
+
+int main() {
+    A * a = nullptr;
+    if (!a->val)
+        a->print();
+    else
+        cout << "\nSecond\n";
+    return 0;
+}
+```
+
+**Raspuns 1**
+Second
+**Raspuns 2**
+Eroare la runtime
+**Raspuns 3**
+Eroare de compilare pe linia 21
+**Raspuns 4**
+First
+
+26. Care este sintaxa pentru a accesa variabilele definite în cadrul unui namespace?
+
+**Raspuns 1**
+operator
+**Raspuns 2**
+namespace::identificator
+**Raspuns 3**
+namespace,identificator
+**Raspuns 4**
+namespace#operator
+
+27. Orice clasă definită de utilizator trebuie să aibă, tot definite de utilizator, următoarele metode:
+
+**Raspuns 1**
+destructor
+**Raspuns 2**
+pot exista clase fără nicio metodă definită de utilizator
+**Raspuns 3**
+constructor fără argumente
+**Raspuns 4**
+supraîncărcarea operatorului =
+
+28. Ce trebuie să conțină un bloc try{...}?
+
+**Raspuns 1**
+cod ce poate genera excepții
+**Raspuns 2**
+cod ce nu trebuie executat în cazul unei excepții
+**Raspuns 3**
+tratarea excepțiilor
+
+29. Se dă următoarea clasă:
+
+```cpp
+class Data {
+    int zi, luna, an;
+};
+```
+
+Ce trebuie adăugat pentru a putea folosi următorul template de funcție pe două obiecte de tipul Data?
+
+```cpp
+template<typename T>
+T egal(T a, T b) {
+    if (a == b)
+        return a;
+    else
+        return b;
+}
+```
+
+**Raspuns 1**
+Clasa trebuie să fie prietenă cu template-ul la funcție.
+**Raspuns 2**
+Nu trebuie adăugat nimic, pentru că toți operatorii necesari în cazul de față sunt generați implicit de către compilator.
+**Raspuns 3**
+Template-ul la funcție trebuie să aparțină clasei.
+**Raspuns 4**
+Supraîncărcarea operatorului ==.
+
+30. Fie următoarea secvență de cod:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class C {
+    int a;
+public:
+    C() {}
+    C(const C&);
+    C& operator =(C&);
+};
+
+C& C::operator=(C & c) {
+    cout << endl << "Operatorul egal";
+    return c;
+}
+
+C::C(const C & c) {
+    cout << endl << "Constructorul de copiere";
+}
+
+int main() {
+    C x, y = x;
+    C b = x;
+    x = y;
+    cout << endl;
+    return 0;
+};
+```
+
+**Raspuns 1**
+Produce eroare de compilare pe Linia 280.
+**Raspuns 2**
+Apelează de trei ori constructorul de copiere și o dată constructorul implicit.
+**Raspuns 3**
+Apelează de două ori constructorul de copiere și de trei ori operatorul egal.
+**Raspuns 4**
+Apelează de două ori constructorul implicit, de două ori operatorul egal, o dată constructorul de copiere.
+**Raspuns 5**
+Apelează de două ori constructorul de copiere, o dată operatorul egal și o dată constructorul implicit.
+
+31. Pe ecran se va afișa?
+
+```cpp
+double radical(double x) {
+    if (x < 0) {
+        throw"numar negativ!";
+    }
+    else {
+        return sqrt(x);
+    }
+}
+
+int main() {
+    double x = -4;
+    try {
+        radical(x);
+    }
+    catch (...) {
+        cout << "Exceptie" << endl;
+    }
+    catch (char *s) {
+        cout << "Exceptie" << s << endl;
+    }
+}
+```
+
+**Raspuns 1**
+Eroare de compilare, in sintaxa C++ nu exista (..)
+**Raspuns 2**
+Exceptie
+**Raspuns 3**
+Exceptie numar negatic!
+
+32. Care este diferenta dintre urmatoarele doua linii de cod?
+
+```cpp
+1. a= b.operator+(c);
+2. a=b+c;
+```
+
+**Raspuns 1**
+Instructiunea 1 apeleaza o functie de supraincarcare definita de utilizator, iar instructiunea 2 apeleaza supraincarcarea operatorului + implicita.
+**Raspuns 2**
+Instructiunea 1 apeleaza o functie din cadrul clase, iar instructiunea 2 nu apeleaza nicio functie
+**Raspuns 3**
+Pentru instructiunea 1 trebuie supraincarcati 2 operatori(+si=)iar pentru instructiunea 2 trebuie supraincarcat doar unul (=)
+**Raspuns 4**
+Nu este nicio diferenta
+
+33. Daca o functie membra dintr-o subclasa are aceeasi semnatura cu o functie membra din clasa parinte atunci aceasta _____ functia membra din clasa parinte
+
+**Raspuns 1**
+Supraincarca
+**Raspuns 2**
+Suprascrie
+**Raspuns 3**
+Este prietena cu
+**Raspuns 4**
+Mosteneste 
+
+34. Urmatorul program va afisa pe ecran
+
+```cpp
+int* a = nullptr;
+int& g();
+
+int main() {
+    a = new int;
+    g() = 4;
+    cout << *a << endl;
+}
+
+int& g() {
+    return *a;
+}
+```
+
+**Raspuns 1**
+Eroare de compilare
+**Raspuns 2**
+4
+**Raspuns 3**
+Adresa lui a
+**Raspuns 4**
+Valoare nedefinita
+
+35. Este adevarat ca:
+
+**Raspuns 1**
+Metodele statice pot accesa doar membrii statici
+**Raspuns 2**
+Membrii statici pot fi accesati doar de metodele statice
+**Raspuns 3**
+Metodele statice pot accesa membrii ne-statici
+**Raspuns 4**
+Metodele statcice pot fi supraincarcate
+
+36. In C++ poate fi intalnita situatia in care un destructor poate fi declarat virtual
+
+**Raspuns 1**
+True
+**Raspuns 2**
+False
+
+37. Poate o functie sa se afle in stanga semnului egal, dupa modelul urmator?
+
+```cpp
+g()=5;
+```
+
+**Raspuns 1**
+Nu, in nici un caz nu este permisa pozitionarea unui apel de functie in stanga semnului egal.
+**Raspuns 2**
+Da, daca valoarea de dupa semnal = este de acelasi tip cu tipul functiei.
+**Raspuns 3**
+Da, daca este supraincarcat semnul egal corespunzator.
+**Raspuns 4**
+Da, daca functia returneaza o valoare prin referinta. 
+
+38. Care dintre urmatorii operatori sunt supraincarcati pentru functori?
+
+**Raspuns 1**
+[]
+**Raspuns 2**
+()
+**Raspuns 3**
+<<
+**Raspuns 4**
+>>
+
+39. Fie urmatoarea secventa de cod:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Clasa1 {
+    bool value;
+public:
+    virtual void f() { cout << "Clasa1" << endl; }
+};
+
+class Clasa2 {
+    int caracter, articol;
+public:
+    void f() { cout << "Clasa2" << endl; }
+};
+
+void egale()
+{
+    cout << "sizeof(obC1) = sizeof(obC2)" << endl;
+}
+
+void obC1obC2()
+{
+    cout << "sizeof(obC1) < sizeof(obC2)" << endl;
+}
+
+void obC2obC1()
+{
+    cout << "sizeof(obC2) < sizeof(obC1)" << endl;
+}
+
+int main()
+{
+    Clasa1 obC1;
+    Clasa2 obC2;
+    void(*f)();
+    sizeof(obC1) == sizeof(obC2) ? f = egale : sizeof(obC1) < sizeof(obC2) ? f = obC1obC2 : f = obC2obC1;
+    (*f)();
+    return 0;
+}
+```
+
+**Raspuns 1**
+sizeof(obC1)<sizeof(obC2)
+**Raspuns 2**
+genereaza eroare de compilare
+**Raspuns 3**
+sizeof(obC1)=sizeof(obC2)
+**Raspuns 4**
+sizeof(obC2)<sizeof(obC1)
+
+40. Ce va afisa urmatorul program?
+
+```cpp
+int g(int x = 0, int y = 1) {
+    return (x * y);
+}
+
+void main(void) {
+    std::cout << g(3);
+}
+```
+
+**Raspuns 1**
+3
+**Raspuns 2**
+0
+**Raspuns 3**
+1
+**Raspuns 4**
+4
+
+41. Iesirea acestui program va fi?
+
+```cpp
+template class<T>
+class Data {
+private:
+     T a;
+public:
+     static unsigned int count;
+     Data() {
+           count++;
+     }
+};
+
+template<class T>
+unsigned int Data<T>::count=0;
+
+int main() {
+     Data<float>z;
+     Data<char>x;
+     Data<char>y;
+     cout<<Data<float>::count<<” ”;
+    cout<<Data<char>::count<<endl;
+} 
+```
+
+**Raspuns 1**
+3 3
+**Raspuns 2**
+2 1
+**Raspuns 3**
+1 2
+**Raspuns 4**
+0 0
+
+42. Care contructori nu au tip de return:
+
+**Raspuns 1**
+Contructorii impliciti
+**Raspuns 2**
+Constructorii de copiere
+**Raspuns 3**
+Contructorii de initializare
+
+43. Ce se va faisa la rularea programului urmator:
+
+```cpp
+#include<iostream>
+int f(int a = 3, int b = 9)
+{
+    return(a + b);
+}
+int main()
+{
+    int a = 9, b = 1;
+    std::cout << "Rezultatul este : " << f(a);
+    return 0;
+}
+```
+
+**Raspuns 1**
+18
+**Raspuns 2**
+11
+**Raspuns 3**
+17
+**Raspuns 4**
+10
+
+44. De ce este nevoie de tratatrea exceptiilor?
+
+**Raspuns 1**
+Pentru a evita erorile de sintaxa
+**Raspuns 2**
+Pentru a uitiliza mai putin timp procesorul
+**Raspuns 3**
+Pentru a utiliza mai putina memorie
+**Raspuns 4**
+Pentru a preveni terminarea anormala a programului
+
+45. Fie următoarea secvență de cod:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class A {
+private:
+    int x;
+public:
+    A() { init(0); }
+    int getX() { return x; }
+protected:
+    void init(int x) { this->x = x + 1; }
+};
+
+class B : public A {
+public:
+    B() { init(this->getX() + 1); }
+    void init(int x) { A::init(x + 1); }
+};
+
+int main() {
+    A *a = new B();
+    cout << "\n" << a->getX();
+    return 0;
+}
+```
+
+Ce se va afișa la execuția acestui cod?
+
+**Variante de răspuns:**
+
+1. 3
+2. Eroare de compilare
+3. 1
+4. 4
+
+46. Cum pot fi accesați membrii privați dintr-o clasă de bază dintr-o funcție ce aparține unei clase derivate?
+
+**Raspuns 1**
+Prin introducerea în clasa derivată a unor funcții statice
+**Raspuns 2**
+Nu se pot accesa membrii privați din clasa de bază din clasa derivată 
+**Raspuns 3**
+Prin apelarea unei funcții publice sau protected din clasa de bază
+**Raspuns 4**
+Prin utilizarea conceptului de polimorfism
+
+47. Fie următoarea secvență de cod:
+
+```cpp
+#include<iostream>
+using namespace std;
+
+class Persoana{
+public:
+    int virsta;
+    Persoana(int v =20) : virsta(v) {}
+};
+
+class Profesor{
+public:
+    int virsta;
+    Profesor(int v=35) : virsta(v){}
+    operator Persoana()
+    {
+        Persoana p;
+        p.virsta = virsta;
+        return p;
+    }
+};
+
+Persoana f(Persoana p)
+{
+    p.virsta++;
+    return p;
+}
+
+int main()
+{
+    Persoana p1;
+    Profesor p2;
+    p1 = f(p1);
+    cout << endl << p1.virsta;
+    p1 = f(p2);
+    cout << endl << p1.virsta;
+}
+```
+
+**Raspuns 1**
+35 20
+**Raspuns 2**
+36 21
+**Raspuns 3**
+21 36
+**Raspuns 4**
+20 35
+
+48. Ce va afișa la ieșirea standard?
+
+```cpp
+class A {
+    static int count;
+public:
+    static int SetCount(const int count) {
+        this->count = count;
+        return this->count;
+    }
+};
+
+int A::count = 0;
+
+void main(void) {
+    std::cout << A::SetCount(3);
+}
+```
+
+**Raspuns 1**
+3
+**Raspuns 2**
+Eroare de compilare
+**Raspuns 3**
+0
+**Raspuns 4**
+Eroare la runtime
+
+49. Care dintre următorii operatori pot fi supraîncărcați prin funcții non-membre?
+
+**Raspuns 1**
+Operatorul de indexare []
+**Raspuns 2**
+Operatorul apel de funcție ()
+**Raspuns 3**
+Operatorul de atribuire =
+**Raspuns 4**
+Operatorul de adunare +
+
+50. Se consideră următorul cod. Programul rulează; nu există erori la compilare sau la rulare, dar are o eroare de logică. Care este aceasta?
+
+```cpp
+#include<iostream>
+
+class Data
+{
+    int zi, luna, an;
+public:
+{
+    void afisare();
+    void citire();
+    ~Data() { std::cout << "Destructor"; }
+};
+
+void Data::citire()
+{
+    std::cout << "Zi:";
+    std::cin >> zi;
+    std::cout << "Luna:";
+    std::cin >> luna;
+    std::cout << "An:";
+    std::cin >> an;
+}
+
+void Data::afisare()
+{
+    std::cout << "Data calerdaristica este" << zi << "-" << luna << "-"<< an << std::endl;
+}
+
+int main()
+{
+    Data d;
+    d.~Data();
+    return 0;
+}
+```
+
+**Raspuns 1**
+Clasa nu are niciun constructor și orice clasă trebuie să aibă măcar unul.
+**Raspuns 2**
+Destructorul nu se apelează explicit.
+**Raspuns 3**
+Funcțiile de citire și afișare nu sunt apelate, deci compilatorul va încărca programul inutil.
+**Raspuns 4**
+Destructorul nu ar trebui definit în clasă, ci în afara ei ca și funcțiile de citire și afișare.
+
+51. Ce se va afișa la consolă?
+
+```cpp
+#include<iostream>
+class A {
+public:
+    virtual void g() {
+        cout << "g() din clasa parinte" << endl;
+    }
+};
+
+class D :public A {
+public:
+    void g() {
+        cout << "g() din clasa copil" << endl;
+    }
+};
+
+int main() {
+    A* pA = new D;
+    pA->A::g();
+}
+```
+
+**Raspuns 1**
+eroare de compilare
+**Raspuns 2**
+g() din clasa parinte
+**Raspuns 3**
+eroare la runtime
+**Raspuns 4**
+g() din clasa copil
+
+52. Care sunt principalele caracteristici ale smart pointerilor în C++?
+
+**Raspuns 1**
+Obiectul referit este dezalocat imediat ce nu mai este referit.
+**Raspuns 2**
+Cunosc dintotdeauna numărul de referințe către resursa respectivă (memorie).
+**Raspuns 3**
+Permit accesul la garbage collection pentru alocarea și dezalocarea memoriei.
+**Raspuns 4**
+Dețin accesul (adresa) exclusiv sau partajat a unui obiect.
+
+53. O clasă abstractă este o clasă care are ____
+
+**Raspuns 1**
+Mai mult de o funcție virtuală
+**Raspuns 2**
+Doar funcții virtuale pure
+**Raspuns 3**
+Cel mult o funcție virtuală pură
+**Raspuns 4**
+Cel puțin o funcție virtuală pură
+
+54. Care dintre următoarele sunt foarte asemănătoare:
+
+**Raspuns 1**
+Clasa și obiectul
+**Raspuns 2**
+Structura și funcția
+**Raspuns 3**
+Structura și obiectul
+**Raspuns 4**
+Clasa și structura
+
+55. Oferă limbajul C++ „backward compatibility” cu limbajul C?
+
+**Raspuns 1**
+Nu
+**Raspuns 2**
+Da
+
+56. Pointerul this este?
+
+**Raspuns 1**
+Variabilă a domeniului clasă
+**Raspuns 2**
+Parametru implicit, ascuns al unei metode
+**Raspuns 3**
+Variabilă membră a clasei
+**Raspuns 4**
+Variabilă locală
+
+57. Dacă o clasă este definită local în interiorul unei funcții, care dintre următoarele este adevărată pentru un obiect al acestei clase? 
+
+**Raspuns 1**
+Obiectul poate fi folosit pentru a apela funcțiile membre ale altor clase.
+**Raspuns 2**
+Obiectul este accesibil din exteriorul funcției.
+**Raspuns 3**
+Un obiect de acest tip poate fi declarat în interiorul altei funcții.
+**Raspuns 4**
+Obiectul poate fi folosit, accesat, declarat doar în această funcție.
+
+58. Care dintre următoarele este adevărată?
+
+**Raspuns 1**
+O clasă poate avea constructor virtual și destructor virtual.
+**Raspuns 2**
+O clasă poate avea constructor virtual, dar nu poate avea destructor virtual.
+**Raspuns 3**
+O clasă poate avea ori destructor virtual, ori constructor virtual.
+**Raspuns 4**
+O clasă poate avea destructor virtual, dar nu poate avea constructor virtual.
+
+59. Care afirmații sunt adevărate pentru funcțiile sau clasele prieteni cu clasa X?
+
+**Raspuns 1**
+Au acces la toți membrii clasei X.
+**Raspuns 2**
+Au acces doar la membrii protected și public ai clasei X.
+**Raspuns 3**
+Au acces doar la membrii protected ai clasei X.
+**Raspuns 4**
+Au acces doar la membrii privați ai clasei X.
+**Raspuns 5**
+Au acces doar la membrii publici ai clasei X.
+
+60. Câte copii ale unui membru static al unei clase se creează pentru obiectele ce aparțin clasei?
+
+**Raspuns 1**
+Se creează câte o copie a membrului static pentru fiecare obiect al clasei.
+**Raspuns 2**
+Se creează un singur exemplar al membrului static indiferent de numărul de obiecte ale clasei.
+**Raspuns 3**
+Pentru membrii
+
+61. În ce ordine vor fi afișate valorile membrilor obiectului b?
+
+```cpp
+class A {
+protected:
+    int a;
+public:
+    A(int x = 0) :a(x) {
+    }
+    friend void Print(void) {
+        cout << a << std << " ";
+    }
+};
+
+class B :public A {
+    int b;
+public:
+    B(int x = 0, int y = 0) : A(x), b(y) {
+    }
+    void Print(void) {
+        A::Print();
+        cout << b << endl;
+    }
+};
+
+int main() {
+    B b(1, 2);
+    b.Print();
+}
+```
+
+**Raspuns 1**
+2, 1
+**Raspuns 2**
+Eroare de compilare
+**Raspuns 3**
+Eroare la runtime
+**Raspuns 4**
+1, 2
+
+62. Clasa abstractă este o clasă care:
+
+**Raspuns 1**
+Nu are membri
+**Raspuns 2**
+Nu are pointerul this
+**Raspuns 3**
+Nu are metode
+**Raspuns 4**
+Nu este instanțiabilă
+
+63. Ce se va afișa la ieșire standard?
+
+```cpp
+class A {
+    static int count;
+public:
+    static int SetCount(const int count) {
+        this->count = count;
+        return this->count;
+    }
+};
+
+int A::count = 0;
+
+void main(void) {
+    std::cout << A::SetCount(3);
+}
+```
+
+**Raspuns 1**
+Eroare la runtime
+**Raspuns 2**
+0
+**Raspuns 3**
+Eroare de compilare
+**Raspuns 4**
+3
+
+64. Fie următoarea secvență de cod:
+
+```cpp
+#include<iostream>
+using namespace std;
+
+class Persoana{
+public:
+    Persoana() { cout << "Constructor" << endl; }
+    ~Persoana() { cout << "Destructor" << endl; }
+};
+
+int main()
+{
+    Persoana** ppp;
+    ppp = new Persoana*[5];
+    for (int i = 0; i < 5; i++)
+        ppp[i] = new Persoana();
+    for (int i = 0; i < 5; i++)
+        delete ppp[i];
+    if (ppp)
+        delete[] ppp;
+    ppp = nullptr;
+    return 0;
+}
+```
+
+Destructorul clasei Persoana este apelat de ... ori.
+
+**Raspuns 1**
+6
+**Raspuns 2**
+1
+**Raspuns 3**
+5
+**Raspuns 4**
+0
+
+65. Considerăm că un computer care este format din mai multe componente individuale precum: placa de bază, placa video, sursa, etc. Dacă fiecare dintre aceste componente implementează strict funcționalitățile specifice componentei, iar un computer este reprezentat ca o entitate care înregistrează cele menționate anterior, care dintre următoarele are cel mai ridicat grad de abstractizare?
+
+**Raspuns 1**
+Placa de bază
+**Raspuns 2**
+Sursa
+**Raspuns 3**
+Computerul
+**Raspuns 4**
+Placa video
+
+66. `std::cout` și `std::cin` sunt: 
+
+**Raspuns 1**
+Obiecte
+**Raspuns 2**
+Funcții
+**Raspuns 3**
+Operatori
+**Raspuns 4**
+Clase
+
+67. Cum pot fi accesate elementele unui container?
+
+**Raspuns 1**
+Pointer la membru
+**Raspuns 2**
+Direct
+**Raspuns 3**
+Iterator
+**Raspuns 4**
+Indirect
+
+68. Care dintre următorii operatori sunt supraîncărcați implicit de către compilator: 1) asignare (=), 2) compare (==)?
+
+**Raspuns 1**
+2
+**Raspuns 2**
+1
+**Raspuns 3**
+1 și 2
+**Raspuns 4**
+Nici unul
+
+69. Pot fi folosite argumente predefinite pentru template-urile de clase?
+
+**Raspuns 1**
+Nu, trebuie să îndeplinească anumite condiții.
+**Raspuns 2**
+Nu este permisă utilizarea argumentelor predefinite pentru template-urile de clase.
+**Raspuns 3**
+Da, la orice template de clasă.
+**Raspuns 4**
+Da, în condiții speciale.
+
+70. Fie clasele următoare:
+
+```cpp
+#include<iostream>
+using namespace std;
+
+class B1 {
+    int x;
+};
+
+class B2 {
+    int y;
+};
+
+class B3 {
+    int z;
+};
+
+class B4 {
+    int t;
+};
+
+class D : public B1, private B2, protected B3, B4 {
+public:
+    int m;
+};
+
+int main() {
+    D d;
+    cout << d.m;  //(1)
+    cout << d.x;   //(2)
+    cout << d.y;   //(3)
+    cout << d.z;   //(4)
+    cout << d.t;   //(5)
+    return 0;
+}
+```
+
+**Raspuns 1**
+(1), (2) și (4)
+**Raspuns 2**
+(1)
+**Raspuns 3**
+(1), (2), (4) și (5)
+**Raspuns 4**
+(1), (2) și (5)
+
+71. Care tip de clasă poate avea funcții membre fără implementare?
+
+**Raspuns 1**
+Clasa default
+**Raspuns 2**
+Clasa concretă
+**Raspuns 3**
+Clasa string
+**Raspuns 4**
+Clasa abstractă
+
+72. O clasă abstractă poate conține:
+
+**Raspuns 1**
+Doar funcții non-virtuale
+**Raspuns 2**
+Funcții pur virtuale și funcții non-virtuale
+**Raspuns 3**
+Doar funcții pur virtuale
+**Raspuns 4**
+Doar funcții virtuale
+
+73. Care opțiune este cea mai bună pentru a elimina problemele de memorie?
+
+**Raspuns 1**
+Utilizarea smart pointerilor & destructorului virtual
+**Raspuns 2**
+Utilizarea destructorului virtual
+**Raspuns 3**
+Utilizarea pointerilor
+**Raspuns 4**
+Utilizarea smart pointerilor
+
+74. Dynamic binding (polimorfism) este obținut prin:
+
+**Raspuns 1**
+Constructori virtuali
+**Raspuns 2**
+Clase virtuale
+**Raspuns 3**
+Supraîncărcarea funcțiilor membre
+**Raspuns 4**
+Funcții virtuale
+
+75. Fie următoarea secvență de cod:
+
+```cpp
+#include<iostream>
+using namespace std;
+
+class Student {
+public:
+    char* nume;
+    int note[10];
+    int nrnote;
+    /*...*/
+    Student(int* v, int dim, char* num) { ... }
+    Student operator=(Student s)
+    {
+        nume = new char[strlen(s.nume) + 1];
+        strcpy_s(nume, strlen(s.nume) + 1, s.nume);
+        for (int i = 0; i < s.nrnote; i++)
+            note[i] = s.note[i];
+        nrnote = s.nrnote;
+        return *this;
+    }
+    ~Student()
+    {
+        if (nume)
+            delete[]nume;
+    }
+
+};
+
+int main()
+{
+    int vector[] = { 1,2,3 };
+    Student s1(vector, 3,"Popescu");
+    Student s2(vector, 3,"Petrescu");
+    s1 = s2;
+    return 0;
+}
+```
+
+va avea ca efect ...
+
+**Raspuns 1**
+Copierea informațiilor din s2 în s1 cu memory leak pe câmpul nume;
+**Raspuns 2**
+Copierea informațiilor din s2 în s1 cu memory leak pe câmpul note
+**Raspuns 3**
+Copierea informațiilor din s2 în s1
+**Raspuns 4**
+Crash la execuția operator
+
+76. Un constructor poate fi virtual?
+
+**Raspuns 1**
+True 
+**Raspuns 2**
+False
+
+77. Mecanismul virtual este tratat ___
+
+**Raspuns 1**
+La runtime
+**Raspuns 2**
+La compilare
+**Raspuns 3**
+În momentul scrierii codului
+**Raspuns 4**
+De sistemul de operare
+
+78. Fie secvența de cod:
+
+```cpp
+#include<iostream>
+using namespace std;
+
+class A
+{
+public:
+    int x, y;
+    A() { x = 1; y = 1; }
+    A(int x)
+    {
+        this->x * 5;
+        this->y = x * 5;
+    }
+};
+
+class B :public A
+{
+public:
+    B(int x) { this->y += this->x * x; }
+};
+
+int main()
+{
+    cout << endl << (new A(1))->y << (new B(1))->y;
+    return 0;
+}
+```
+
+La rularea acestui cod se obține: 
+
+**Raspuns 1**
+52
+
+79. Clasa abstractă este o clasă care:
+
+**Raspuns 1**
+Nu are metode
+**Raspuns 2**
+Nu are pointerul this
+**Raspuns 3**
+Are funcții virtuale pure
+**Raspuns 4**
+Nu are membri
+
+80. Prin cazul în care avem o declarație a unui obiect de genul:
+
+```cpp
+Data *d;
+```
+
+Ce constructor se va apela?
+
+**Raspuns 1**
+Niciun constructor
+**Raspuns 2**
+Constructorul definit implicit de compilator, dacă nu este declarat niciun constructor în clasă
+**Raspuns 3**
+Constructorul de copiere ce se apelează obligatoriu în cazul pointerilor
+**Raspuns 4**
+Constructorul fără argumente dacă este declarat
+
+81. Care dintre următoarele concepte subliniază trăsătura polimorfică a unei clase?
+
+**Raspuns 1**
+Funcții membre
+**Raspuns 2**
+Funcții inline
+**Raspuns 3**
+Funcții nedefinite
+**Raspuns 4**
+Funcții virtuale
+
+82. Fie următorul program. Ce va fi afișat pe ecran?
+
+```cpp
+namespace P {
+    int x = 2;
+}
+
+namespace Q {
+    int x = 7;
+}
+
+void main(void) {
+    int x = 10;
+    using namespace Q;
+    std::cout << x;
+}
+```
+
+**Raspuns 1**
+Eroare de compilare datorită situației de ambiguitate
+**Raspuns 2**
+10
+**Raspuns 3**
+2
+**Raspuns 4**
+7
+
+83. Fie următoarea secvență de cod:
+
+```cpp
+#include<iostream>
+using namespace std;
+
+class A
+{
+public:
+    int x, y;
+    A() { x = 1; y = 1; }
+    A(int x)
+    {
+        this->x = x;
+        this->y = 1;
+    }
+};
+
+class B : public A
+{
+public:
+    B(int x) { this->y += this->x + x; }
+};
+
+int main()
+{
+    cout << endl << (new A(1))->y << (new B(1))->y;
+    return 0;
+}
+```
+
+**Raspuns 1**
+10
+**Raspuns 2**
+11
+**Raspuns 3**
+13
+**Raspuns 4**
+21
+
+84. Dimensiunea unei clase, ca tip de date definit de programator, este:
+
+**Raspuns 1**
+Dimensiunea celui mai mare membru din clasă
+**Raspuns 2**
+Clasa nu are o dimensiune, ci tipul de date definit
+**Raspuns 3**
+Suma dimensiunilor membrilor și metodelor din interiorul clasei, împreună cu cele moștenite
+**Raspuns 4**
+Suma dimensiunilor membrilor și metodelor din interiorul clasei
+
+85. Care afirmație este adevărată la întoarcerea unui obiect dintr-o funcție:
+
+**Raspuns 1**
+Un obiect poate fi întors fără crearea altui obiect temporar
+**Raspuns 2**
+Obiectul este întors implicit, poate diferi în funcție de compilator
+**Raspuns 3**
+Este creat un obiect temporar pentru a întoarce valoarea
+**Raspuns 4**
+Același obiect folosit în funcție este utilizat pentru a întoarce valoarea
+
+86. Ce va afișa următorul program:
+
+```cpp
+int main() {
+    class A {
+        int x = 10;
+    }s;
+    cout << s.x;
+}
+```
+
+**Raspuns 1**
+Runtime error
+**Raspuns 2**
+10
+**Raspuns 3**
+Compile error
+**Raspuns 4**
+Garbage
+
+87. Când este necesară scrierea unui constructor de copiere?
+
+**Raspuns 1**
+Constructorul de copiere este obligatoriu la orice clasă definită de utilizator, indiferent de ce membri are acea clasă
+**Raspuns 2**
+Când în clasă sunt membri de tip pointer pentru care se face alocare dinamică de memorie
+**Raspuns 3**
+Când clasa nu are niciun membru (are doar metode) și se vrea copierea obiectelor de tipul clasei respective
+**Raspuns 4**
+Nu este necesară scrierea unui constructor de copiere niciodată, compilatorul va genera unul pentru orice clasă definită de utilizator
+
+88. Care sunt cele două blocuri folosite în C++ pentru verificarea erorilor și tratarea lor?
+
+**Raspuns 1**
+try, check
+**Raspuns 2**
+trying, catching
+**Raspuns 3**
+do, catch
+**Raspuns 4**
+try, catch
+
+89. Dacă B moștenește privat A, metodele private ale clasei A sunt ___ în clasa B
+
+**Raspuns 1**
+Inaccesibile
+**Raspuns 2**
+Protejate
+**Raspuns 3**
+Accesibile
+**Raspuns 4**
+Publice
+
+90. Ieșirea acestui program va fi:
+
+```cpp
+template<typename T, typename U = char>
+class A {
+    T a;
+    U b;
+};
+
+void main(void) {
+    A<char>x;
+    A<double, double>y;
+    std::cout << sizeof(x) << ",";
+    std::cout << sizeof(y) << std::endl;
+}
+```
+
+**Raspuns 1**
+Nimic, a și b sunt membri privați, nu se poate calcula dimensiunea
+**Raspuns 2**
+1, 16
+**Raspuns 3**
+2, 16
+**Raspuns 4**
+Eroare de compilare
+
+91. Considerând implementarea, care este mesajul afișat?
+
+```cpp
+#include<iostream>
+using namespace std;
+
+class examen {
+    int a;
+public:
+    examen(int _a = 10) {
+        a = _a;
+        cout << "constructor" << ' ';
+    }
+};
+
+int main() {
+    examen POO, PLA();
+    return 0;
+}
+```
+
+**Raspuns 1**
+Constructor
+**Raspuns 2**
+Programul nu afișează nimic
+**Raspuns 3**
+Constructor constructor
+**Raspuns 4**
+Programul conține erori deoarece nu este definit constructorul implicit
+
+92. Ce fel de semantică folosește limbajul C++ pentru implementarea iteratorilor?
+
+**Raspuns 1**
+Valoare
+**Raspuns 2**
+Pointer
+**Raspuns 3**
+Referință
+**Raspuns 4**
+Dimensiune
+
+93. Ce definesc toate containerele din STD?
+
+**Raspuns 1**
+Metoda END()
+**Raspuns 2**
+Tipul Iterator
+**Raspuns 3**
+Toate
+**Raspuns 4**
+Metoda Begin()
+
+94. Cum sunt accesați membrii unui obiect?
+
+**Raspuns 1**
+Doar prin intermediul pointerilor
+**Raspuns 2**
+Utilizând operatorul punct
+**Raspuns 3**
+Utilizând operatorul de rezoluție
+**Raspuns 4**
+Utilizând direct numele membrilor obiectului
+
+95. Ce este afișat la consolă în urma execuției următoarei secvențe de cod?
+
+```cpp
+int main() {
+    int a = 5;
+    if (a < 7)
+    {
+        int a;
+        a = 7;
+    }
+    cout << "a:" << a << endl;
+}
+```
+
+**Raspuns 1**
+7
+**Raspuns 2**
+5
+**Raspuns 3**
+Comportament nedefinit
+**Raspuns 4**
+57
+
+96. Care este ordinea de apelare a contructorilor, respectiv a destructorilor pentru un obiect de tip D2? Se consideră ierarhia de clase B (clasa de bază) -D1(clasa derivată din B)-D2(clasa derivată din D1)
+
+**Raspuns 1**
+Constructor D2->Constructor D1->Constructor B; Destructor D2->Destructor D1-> Destructor B
+**Raspuns 2**
+Constructor B->Constructor D1->Constructor D2; Destructor D2->Destructor D1-> Destructor B
+**Raspuns 3**
+Constructor B->Constructor D1->Constructor D2; Destructor B->Destructor D1-> Destructor D2
+**Raspuns 4**
+Constructor D2->Constructor D1->Constructor B; Destructor B->Destructor D1-> Destructor D2
+
+97. Pentru supraîncărcarea contructorilor aceștia pot să difere prin:
+
+**Raspuns 1**
+Numărul parametrilor
+**Raspuns 2**
+Definiție
+**Raspuns 3**
+Tipul returnat
+**Raspuns 4**
+Tipul parametrilor
+
+98. Fie următoarea secvență e cod:
+
+```cpp
+#include<iostream>
+using namespace std;
+
+class Persoana {
+    int varsta;
+    char* nume;
+public:
+    Persoana(int v = 0, char* n = "Oarecare") :varsta(v)
+    {
+        this->nume = new char[strlen(n) + 1];
+        strcpy(this->nume, n);
+        cout << "Constructor(" << nume << ")" << endl;
+    }
+    Persoana(Persoana& p)
+    {
+        this->varsta = p.varsta;
+        delete[] this->nume;
+        this->nume = new char[strlen(o.nume) + 1];
+        strcpy(this->nume, p.nume);
+        cout << "Operator = " << endl;
+    }
+    ~Persoana() { cout << "Destructor" << endl; }
+};
+
+int main()
+{
+    Persoana* p1 = nullptr, p2(12, "Popescu");
+    Persoana p3 = *p1;
+    Persoana p4 = p2;
+    return 0;
+}
+```
+
+**Raspuns 1**
+Constructor(nullptr), Constructor (Popescu), Constructor de copiere, Contructor de copiere, Destructor, Destructor, Destructor
+**Raspuns 2**
+Contructor(), Constructor(Popescu), Constructor de copiere, Constructor de copiere, Destructor, Destructor, Destructor
+**Raspuns 3**
+Eroare la compilare
+**Raspuns 4**
+Constructor(Popescu) si eroare la runtime
+
+99. Care afirmații sunt adevărate în ceea ce privește constructorii?
+
+**Raspuns 1**
+Nu au niciun tip de return
+**Raspuns 2**
+Pot fi supraîncărcați
+**Raspuns 3**
+Pot avea o listă de parametri
+**Raspuns 4**
+Numele trebuie să fie același cu cel al clasei
+
+100. Care dintre următoarele este greșită în C++?
+
+**Raspuns 1**
+`class car { } c[];`
+**Raspuns 2**
+`class car { }; car c;`
+**Raspuns 3**
+`class car { } c;`
+**Raspuns 4**
+`class car { }; car c[5];`
+
+101. Care afirmații sunt false?
+
+**Raspuns 1**
+Obiectele trebuie create înaintea utilizării membrilor acestora
+**Raspuns 2**
+Memoria aferentă unui obiect este alocată doar după apelul constructorului
+**Raspuns 3**
+Obiectele nu pot fi transmise prin referință
+**Raspuns 4**
+Dimensiunea obiectelor depinde de tipul de date al membrilor clasei aferente
+
+102. Următorul program urmează a fi compilat și lansat în execuție, Care va fi rezultatul?
+
+```cpp
+class A {
+public:
+    int print() { cout << ”Poo exam grade : ” << x << endl; };
+    int x;
+};
+
+int main() {
+    A* p = nullptr;
+    p->print();
+}
+```
+
+**Raspuns 1**
+Compile error
+**Raspuns 2**
+Poo exam grade:
+**Raspuns 3**
+Runtime error
+**Raspuns 4**
+ERROR: int print – trebuie sa returneze un int//lipsa return
+
+103. Următorul program urmează a fi compilat și lansat în execuție, Care va fi rezultatul?
+
+```cpp
+class A {
+public:
+    int print() { cout << ”Poo exam grade : ” << endl; };
+};
+
+int main() {
+    A* p = nullptr;
+    p->print();
+}
+```
+
+**Raspuns 1**
+Poo exam grade:
+**Raspuns 2**
+Runtime error
+**Raspuns 3**
+Compile error
+
+104. Care este dimensiunea unui obiect aparținând următoarei clase (arhitectura sistemului de calcul pe 64 de biți)?
+
+```cpp
+class Profesor {
+    int varsta;
+    char nume[20];
+    static int nrinstante;
+};
+```
+
+**Raspuns 1**
+28
+**Raspuns 2**
+22
+**Raspuns 3**
+24
+**Raspuns 4**
+26
+**Raspuns 5**
+20
+
+105. Care dintre următoarele afirmații sunt adevărate pentru o clasă?
+
+**Raspuns 1**
+Clasele pot avea funcții membre dar nu pot avea membri date
+**Raspuns 2**
+Definiția clasei trebuie să se termine cu „punct și virgulă”
+**Raspuns 3**
+Clasele pot avea atât membri date cât și funcții membre
+
+106. Ce concepte de bază POO sunt ilustrate în următoarea secvență de cod?
+
+```cpp
+struct Persoana
+{
+public:
+    void Read();
+    void Write();
+private:
+    char nume[64];
+    char dataNastere[16];
+    char adresa[128];
+    unsigned long long int cnp;
+};
+```
+
+**Raspuns 1**
+Încapsulare
+**Raspuns 2**
+Abstractizare
+**Raspuns 3**
+Polimorfism
+**Raspuns 4**
+Moștenire
+
+107. Considerând clasa Student, ce funcții trebuiesc definite pentru o funcționare corectă a programului `main() {...}`?
+
+```cpp
+int main() {
+    Student s1, s2;
+    s2 = s1;
+}
+```
+
+**Raspuns 1**
+Nicio funcție 
+**Raspuns 2**
+Supraîncărcarea operatorului de asignare
+**Raspuns 3**
+Constructorul vid
+**Raspuns 4**
+Constructorul de copiere
+
+108. Ce va fi afișat la consola standard?
+
+```cpp
+class A {
+using namespace std;
+public:
+    A(void) {
+        std::cout << ”A()”;
+    }
+};
+
+void main(void) {
+    A* x = (A*)malloc(sizeof(1));
+}
+```
+
+**Raspuns 1**
+Eroare de compilare
+**Raspuns 2**
+Eroare la runtime
+**Raspuns 3**
+A();
+**Raspuns 4**
+Nimic
+
+109. În care dintre situațiile următoare este apelat constructorul de copiere?
+
+**Raspuns 1**
+La inițializarea unui obiect nou creat cu un alt obiect
+**Raspuns 2**
+În cadrul unei funcții ce returnează un obiect
+**Raspuns 3**
+La transferul parametrilor unei funcții prin valoare
+**Raspuns 4**
+La inițializarea unui obiect existent cu un alt obiect
