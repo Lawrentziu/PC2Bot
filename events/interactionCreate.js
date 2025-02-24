@@ -2,8 +2,13 @@ const { Events, MessageFlags } = require('discord.js');
 
 module.exports = {
 	name: Events.InteractionCreate,
-	async execute(interaction, questions) {
-		if (!interaction.isChatInputCommand()) return;
+	async execute(interaction) {
+		if (!interaction.isChatInputCommand() && !interaction.isButton()) return;
+		if (interaction.isButton())
+		{
+			console.log(interaction.message);
+			return;
+		}
 
 		const command = interaction.client.commands.get(interaction.commandName);
 
@@ -13,7 +18,7 @@ module.exports = {
 		}
 
 		try {
-			await command.execute(interaction, questions);
+			await command.execute(interaction);
 		} catch (error) {
 			console.error(error);
 			if (interaction.replied || interaction.deferred) {
