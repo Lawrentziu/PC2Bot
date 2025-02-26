@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const schema = require('./schemas/QuestionSchema.js');
-const { mongoURL } = require('./config.json');
+const mongoURL = process.env.mongoURL;
 const { default: mongoose } = require('mongoose');
 
 const quizFile = fs.readFileSync(path.join(__dirname, 'questions.txt'), 'utf8');
