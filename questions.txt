@@ -131,10 +131,8 @@ Eroare de compilare
 **Raspuns 3**
 Toți constructorii unei clase trebuie să fie publici
 **Raspuns 4**
-O clasă trebuie să aibă tot atâți destructori, câți constructori are
-**Raspuns 5**
 @În general, dacă este necesară supraîncărcarea operatorului =, atunci este necesară și definirea unui constructor de copiere
-**Raspuns 6**
+**Raspuns 5**
 Nu pot exista clase fără constructori definiți de utilizator
 
 9. Fie următoarea secvență de cod:

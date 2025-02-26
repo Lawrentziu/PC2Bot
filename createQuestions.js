@@ -20,7 +20,7 @@ const quizFile = fs.readFileSync(path.join(__dirname, 'questions.txt'), 'utf8');
 
     const questions = quizFile.split(/(?:\d+\.\s)/).filter(line => line.trim() !== '');
 
-    for (let i = 1; i < questions.length; i++)
+    for (let i = 0; i < questions.length; i++)
     {
         const q = questions[i];
 
