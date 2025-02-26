@@ -1,6 +1,6 @@
 const { Events } = require('discord.js');
 const mongoose = require('mongoose');
-const { mongoURL } = require('../config.json');
+const mongoURL = process.env.mongoURL;
 
 module.exports = {
 	name: Events.ClientReady,
